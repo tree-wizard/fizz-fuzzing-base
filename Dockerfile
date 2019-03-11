@@ -1,4 +1,4 @@
-# Folly Bser Dockerfile
+# Folly Fizz Dockerfile
 
 FROM ubuntu:latest
 RUN apt-get update --fix-missing
@@ -22,14 +22,15 @@ RUN git clone https://github.com/facebook/folly /root/proxygen/proxygen/folly
 RUN git clone https://github.com/facebookincubator/fizz /root/proxygen/proxygen/fizz
 
 #download and replace files.
-RUN git clone https://github.com/xxyyx/folly-bser /root/folly-bser
-RUN chmod +777 /root/folly-bser/replacements/deps.sh
+RUN git clone https://github.com/xxyyx/fizz-fuzzing-base /root/fizz-base
+RUN chmod +777 /root/fizz-base/replacements/deps.sh
 
-RUN mv /root/folly-bser/replacements/deps.sh /root/proxygen/proxygen/deps.sh
-RUN mv /root/folly-bser/replacements/FollyConfigChecks.cmake /root/proxygen/proxygen/folly/CMake/FollyConfigChecks.cmake
-RUN mv /root/folly-bser/replacements/Subprocess.cpp /root/proxygen/proxygen/folly/folly/Subprocess.cpp
 
-#replace CMAKELists.txt
+RUN mv /root/fizz-base/replacements/deps.sh /root/proxygen/proxygen/deps.sh
+RUN mv /root/fizz-base/replacements/FollyConfigChecks.cmake /root/proxygen/proxygen/folly/CMake/FollyConfigChecks.cmake
+RUN mv /root/fizz-base/replacements/Subprocess.cpp /root/proxygen/proxygen/folly/folly/Subprocess.cpp
+
+RUN mv /root/fizz-base/replacements/CMakeLists.txt /root/proxygen/proxygen/fizz/fizz/CMakeLists.txt
 
 #RUN ./deps.sh
 # RUN ldconfig
