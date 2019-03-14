@@ -31,6 +31,8 @@ RUN mv /root/fizz-base/replacements/FollyConfigChecks.cmake /root/proxygen/proxy
 RUN mv /root/fizz-base/replacements/Subprocess.cpp /root/proxygen/proxygen/folly/folly/Subprocess.cpp
 
 RUN mv /root/fizz-base/replacements/CMakeLists.txt /root/proxygen/proxygen/fizz/fizz/CMakeLists.txt
+RUN mv /root/fizz-base/replacements/Range.h /root/proxygen/proxygen/folly/folly/Range.h
+RUN mv /root/fizz-base/replacements/Constexpr.h /root/proxygen/proxygen/folly/folly/portability/Constexpr.h
 
 #RUN ./deps.sh
 # RUN ldconfig
