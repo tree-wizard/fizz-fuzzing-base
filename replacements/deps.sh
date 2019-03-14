@@ -98,3 +98,13 @@ CXX=clang++-7 CXXFLAGS='-g -fsanitize=fuzzer-no-link,address,undefined' cmake co
 make -j$JOBS
 make install
 cd ../..
+
+# Build proxygen
+autoreconf -ivf
+./configure CXX=clang++-7 CXXFLAGS='-g -fsanitize=fuzzer-no-link,undefined,address' CC=clang-7 CFLAGS='-g -fsanitize=fuzzer-no-link,address,undefined'
+make -j$JOBS
+
+# Run tests
+LD_LIBRARY_PATH=/usr/local/lib make
+
+make install
